@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MessageOptimum>
+    <Entete>
+        <Emetteur>ASSURANCE_BOUCLIER_FR</Emetteur>
+        <Recepteur>CARROSSERIE_DUPONT</Recepteur>
+        <DateEmission>2026-05-03T10:15:00</DateEmission>
+        <TypeMessage>OrdreDeMission</TypeMessage>
+    </Entete>
+    <Dossier>
+        <Sinistre>
+            <NumeroSinistre>SIN-2026-987654</NumeroSinistre>
+            <DateSinistre>2026-04-28</DateSinistre>
+            <Nature>Choc Arrière</Nature>
+            <Responsabilite>0</Responsabilite>
+        </Sinistre>
+        <Assure>
+            <Civilite>M.</Civilite>
+            <Nom>MARTIN</Nom>
+            <Prenom>Jean</Prenom>
+            <NumeroContrat>CTR-88776655</NumeroContrat>
+            <Telephone>0612345678</Telephone>
+        </Assure>
+        <Vehicule>
+            <Immatriculation>AB-123-CD</Immatriculation>
+            <Marque>Peugeot</Marque>
+            <Modele>308</Modele>
+            <DateMiseEnCirculation>2021-06-15</DateMiseEnCirculation>
+            <Kilometrage>45200</Kilometrage>
+        </Vehicule>
+        <Expertise>
+            <CabinetExpert>EXPERT_AUTO_AQUITAINE</CabinetExpert>
+            <ReferenceExpert>EXP-2026-A112</ReferenceExpert>
+            <MontantEstimeHT>1250.00</MontantEstimeHT>
+            <MontantEstimeTTC>1500.00</MontantEstimeTTC>
+            <Devise>EUR</Devise>
+        </Expertise>
+    </Dossier>
+</MessageOptimum>

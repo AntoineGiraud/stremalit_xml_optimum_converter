@@ -12,14 +12,16 @@ Ce projet est un prototype interactif développé avec **Streamlit**. Il permet 
 ## 📸 Aperçus
 
 ### Interface Streamlit
+
 ![Interface utilisateur](./docs/screen_ui_streamlit.png)
 
 ### PDF Généré
+
 ![Aperçu du PDF](./docs/screen_du_pdf_genere.png)
 
 ## 🛠️ Utilisation
 
-Assurez-vous d'avoir Python installé sur votre machine. Il est recommandé d'utiliser un environnement virtuel.
+Assurez-vous d'avoir uv installé sur votre machine pour gérer votre environnement python.
 
 1. Clonez ce repository.
 2. `uv sync` Installez les dépendances python requises

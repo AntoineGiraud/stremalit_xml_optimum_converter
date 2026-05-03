@@ -1,11 +1,10 @@
 [project]
 name = "streamlit-optimum-convertor"
 version = "0.1.0"
-description = "Add your description here"
+description = "Démo pipo d'un convertisseur .xml optimum utilisé par des assureur en .pdf"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "fpdf2>=2.8.7",
     "streamlit>=1.57.0",
 ]
-

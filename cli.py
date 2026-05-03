@@ -50,8 +50,10 @@ def process(
         table.add_column("Champ métier", width=25)
         table.add_column("Valeur extraite")
 
-        for key, value in data.items():
-            table.add_row(key, str(value))
+        for key, value in data.model_dump().items():
+            # Un petit formatage pour rendre les clés plus lisibles dans le terminal
+            clean_key = key.replace("_", " ").capitalize()
+            table.add_row(clean_key, str(value))
 
         console.print(table)
         console.print()
@@ -64,8 +66,7 @@ def process(
             pdf_bytes = create_professional_pdf(data)
 
             # Définition du nom du fichier
-            immatriculation = data.get("Immatriculation", "INCONNU").replace("-", "")
-            output_file = output_dir / f"OM_{immatriculation}.pdf"
+            output_file = output_dir / f"OM_{data.immatriculation.replace('-', '')}.pdf"
 
             # Écriture du fichier binaire
             with open(output_file, "wb") as f:

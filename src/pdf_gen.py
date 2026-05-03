@@ -1,5 +1,5 @@
 from fpdf import FPDF
-from typing import Dict
+from src.models import OrdreMission
 
 
 class PDF(FPDF):
@@ -25,104 +25,73 @@ class PDF(FPDF):
         self.ln(2)
 
 
-def create_professional_pdf(data: Dict[str, str]) -> bytes:
-    """
-    Génère un PDF structuré à partir d'un dictionnaire de données.
-
-    Args:
-        data: Dictionnaire contenant les informations de la mission.
-
-    Returns:
-        Les octets (bytes) constituant le fichier PDF.
-    """
+def create_professional_pdf(data: OrdreMission) -> bytes:
+    """Génère un PDF structuré à partir du modèle Pydantic."""
     pdf = PDF()
     pdf.add_page()
 
-    # --- BLOC DOSSIER & SINISTRE ---
     pdf.section_title("1. INFORMATIONS DOSSIER")
     pdf.set_font("helvetica", size=10)
     col_width = 95
-    pdf.cell(
-        col_width, 7, f"N° Dossier Assureur : {data.get('Ref Dossier', '')}", border="B"
-    )
+    pdf.cell(col_width, 7, f"N° Dossier Assureur : {data.ref_dossier}", border="B")
     pdf.cell(
         col_width,
         7,
-        f"Date du Sinistre : {data.get('Date Sinistre', '')}",
+        f"Date du Sinistre : {data.date_sinistre}",
         border="B",
         new_x="LMARGIN",
         new_y="NEXT",
     )
-    pdf.cell(col_width, 7, f"Nature du choc : {data.get('Nature', '')}", border="B")
+    pdf.cell(col_width, 7, f"Nature du choc : {data.nature}", border="B")
     pdf.cell(
         col_width,
         7,
-        f"Cabinet Expert : {data.get('Expert', '')}",
+        f"Cabinet Expert : {data.expert}",
         border="B",
         new_x="LMARGIN",
         new_y="NEXT",
     )
     pdf.ln(5)
 
-    # --- BLOC CLIENT ---
     pdf.section_title("2. INFORMATIONS CLIENT / ASSURÉ")
-    pdf.cell(col_width, 7, f"Nom : {data.get('Nom Assuré', '')}", border="B")
+    pdf.cell(col_width, 7, f"Nom : {data.nom_assure}", border="B")
     pdf.cell(
         col_width,
         7,
-        f"Téléphone : {data.get('Téléphone', '')}",
+        f"Téléphone : {data.telephone}",
         border="B",
         new_x="LMARGIN",
         new_y="NEXT",
     )
     pdf.cell(
-        0,
-        7,
-        f"Localisation : {data.get('Ville', '')}",
-        border="B",
-        new_x="LMARGIN",
-        new_y="NEXT",
+        0, 7, f"Localisation : {data.ville}", border="B", new_x="LMARGIN", new_y="NEXT"
     )
     pdf.ln(5)
 
-    # --- BLOC VÉHICULE ---
     pdf.section_title("3. VÉHICULE")
     pdf.set_font("helvetica", "B", 11)
     pdf.cell(
-        0,
-        8,
-        f"Immatriculation : {data.get('Immatriculation', '')}",
-        new_x="LMARGIN",
-        new_y="NEXT",
+        0, 8, f"Immatriculation : {data.immatriculation}", new_x="LMARGIN", new_y="NEXT"
     )
     pdf.set_font("helvetica", size=10)
-    pdf.cell(
-        col_width, 7, f"Marque/Modèle : {data.get('Marque/Modèle', '')}", border="B"
-    )
+    pdf.cell(col_width, 7, f"Marque/Modèle : {data.marque_modele}", border="B")
     pdf.cell(
         col_width,
         7,
-        f"Finition : {data.get('Version', '')}",
+        f"Finition : {data.version}",
         border="B",
         new_x="LMARGIN",
         new_y="NEXT",
     )
     pdf.ln(5)
 
-    # --- CONDITIONS & INSTRUCTIONS ---
     pdf.section_title("4. CONDITIONS DE RÉPARATION")
     pdf.set_font("helvetica", "B", 10)
     pdf.cell(
-        0,
-        7,
-        f"FRANCHISE APPLICABLE : {data.get('Franchise', '')}",
-        new_x="LMARGIN",
-        new_y="NEXT",
+        0, 7, f"FRANCHISE APPLICABLE : {data.franchise}", new_x="LMARGIN", new_y="NEXT"
     )
     pdf.ln(2)
     pdf.set_font("helvetica", "I", 9)
-    pdf.multi_cell(
-        0, 6, f"Instructions particulières : {data.get('Instructions', '')}", border=1
-    )
+    pdf.multi_cell(0, 6, f"Instructions : {data.instructions}", border=1)
 
     return bytes(pdf.output())

@@ -52,31 +52,29 @@ if xml_source:
     try:
         # 1. Traitement Métier : Appel au parseur
         data = extract_darva_data(xml_source)
-
-        # 2. Affichage UI
+        # 2. Affichage UI (accès via l'objet Pydantic)
         col1, col2 = st.columns(2)
         with col1:
             st.subheader("🚗 Véhicule & Sinistre")
-            st.write(f"**Immat :** {data['Immatriculation']}")
-            st.write(f"**Modèle :** {data['Marque/Modèle']}")
-            st.write(f"**Dossier :** {data['Ref Dossier']}")
+            st.write(f"**Immat :** {data.immatriculation}")
+            st.write(f"**Modèle :** {data.marque_modele}")
+            st.write(f"**Dossier :** {data.ref_dossier}")
 
         with col2:
             st.subheader("👤 Client & Assurance")
-            st.write(f"**Assuré :** {data['Nom Assuré']}")
-            st.write(f"**Franchise :** :red[{data['Franchise']}]")
-            st.write(f"**Expert :** {data['Expert']}")
+            st.write(f"**Assuré :** {data.nom_assure}")
+            st.write(f"**Franchise :** :red[{data.franchise}]")
+            st.write(f"**Expert :** {data.expert}")
 
         st.divider()
 
-        # 3. Traitement Métier : Appel au générateur PDF
+        # 3. Traitement Métier
         pdf_output = create_professional_pdf(data)
 
-        # Bouton de téléchargement
         st.download_button(
             label="📄 Générer l'Ordre de Mission PDF",
             data=pdf_output,
-            file_name=f"OM_{data['Immatriculation']}.pdf",
+            file_name=f"OM_{data.immatriculation}.pdf",
             mime="application/pdf",
             use_container_width=True,
         )

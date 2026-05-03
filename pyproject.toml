@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "fpdf2>=2.8.7",
+    "pydantic>=2.13.3",
     "streamlit>=1.57.0",
     "typer[all]>=0.25.1",
 ]

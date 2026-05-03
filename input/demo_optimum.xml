@@ -1,38 +1,65 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<MessageOptimum>
-    <Entete>
-        <Emetteur>ASSURANCE_BOUCLIER_FR</Emetteur>
-        <Recepteur>CARROSSERIE_DUPONT</Recepteur>
-        <DateEmission>2026-05-03T10:15:00</DateEmission>
-        <TypeMessage>OrdreDeMission</TypeMessage>
-    </Entete>
-    <Dossier>
-        <Sinistre>
-            <NumeroSinistre>SIN-2026-987654</NumeroSinistre>
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<FluxDarva version="2010.1">
+    <EnteteTechnique>
+        <Emetteur type="ASSUREUR">999998888</Emetteur>
+        <Recepteur type="REPARATEUR">111112222</Recepteur>
+        <DateHeureCreation>2026-05-03T10:14:22</DateHeureCreation>
+        <ReferenceFlux>FLX-20260503-00012345</ReferenceFlux>
+    </EnteteTechnique>
+
+    <Message type="OrdreMission">
+        <EnteteMessage>
+            <CodeCompagnie>023</CodeCompagnie> <NumeroDossierAssureur>A-26-987456-XY</NumeroDossierAssureur>
             <DateSinistre>2026-04-28</DateSinistre>
-            <Nature>Choc Arrière</Nature>
-            <Responsabilite>0</Responsabilite>
-        </Sinistre>
-        <Assure>
-            <Civilite>M.</Civilite>
-            <Nom>MARTIN</Nom>
-            <Prenom>Jean</Prenom>
-            <NumeroContrat>CTR-88776655</NumeroContrat>
-            <Telephone>0612345678</Telephone>
-        </Assure>
+            <NatureSinistre code="12">CHOC_ARRIERE</NatureSinistre>
+        </EnteteMessage>
+
+        <Intervenants>
+            <Assure>
+                <Civilite>M</Civilite>
+                <Nom>DUPONT</Nom>
+                <Prenom>Alexandre</Prenom>
+                <Adresse>
+                    <Rue1>14 Avenue des Champs-Elysees</Rue1>
+                    <Rue2></Rue2>
+                    <CodePostal>75008</CodePostal>
+                    <Ville>PARIS</Ville>
+                    <CodePays>FR</CodePays>
+                </Adresse>
+                <Contacts>
+                    <Telephone type="PORTABLE">0611223344</Telephone>
+                    <Email>alexandre.dupont@email.fr</Email>
+                </Contacts>
+                <TVA>NON_ASSUJETTI</TVA>
+            </Assure>
+            <CabinetExpert>
+                <AgrementDarva>EXP-33-888</AgrementDarva>
+                <RaisonSociale>CABINET EXPERTISE DUPUIS</RaisonSociale>
+            </CabinetExpert>
+        </Intervenants>
+
         <Vehicule>
             <Immatriculation>AB-123-CD</Immatriculation>
-            <Marque>Peugeot</Marque>
-            <Modele>308</Modele>
-            <DateMiseEnCirculation>2021-06-15</DateMiseEnCirculation>
-            <Kilometrage>45200</Kilometrage>
+            <Marque>RENAULT</Marque>
+            <Modele>CLIO IV</Modele>
+            <Version>1.5 DCI 90 ENERGY ZEN</Version>
+            <DateMiseEnCirculation>2018-09-12</DateMiseEnCirculation>
+            <Kms>85400</Kms>
+            <TypeMine>M10RENVP000G213</TypeMine>
+            <Energie>GO</Energie>
         </Vehicule>
-        <Expertise>
-            <CabinetExpert>EXPERT_AUTO_AQUITAINE</CabinetExpert>
-            <ReferenceExpert>EXP-2026-A112</ReferenceExpert>
-            <MontantEstimeHT>1250.00</MontantEstimeHT>
-            <MontantEstimeTTC>1500.00</MontantEstimeTTC>
-            <Devise>EUR</Devise>
-        </Expertise>
-    </Dossier>
-</MessageOptimum>
+
+        <ConditionsReglement>
+            <Franchise type="FIXE">
+                <Montant devise="EUR">250.00</Montant>
+            </Franchise>
+            <PlafondReparation devise="EUR">3500.00</PlafondReparation>
+            <CessionCreance>OUI</CessionCreance>
+        </ConditionsReglement>
+
+        <InfosMission>
+            <DateMission>2026-05-03</DateMission>
+            <Instructions>Merci de proceder au demontage pour expertise contradictoire le 06/05. Vehicule roulant.</Instructions>
+        </InfosMission>
+    </Message>
+</FluxDarva>

@@ -17,7 +17,7 @@ Ce projet est un prototype interactif développé avec **Streamlit**. Il permet 
 
 ### PDF Généré
 
-![Aperçu du PDF](./docs/screen_du_pdf_genere.png)
+![Aperçu du PDF](./docs/screen_pdf_genere.png)
 
 ## 🛠️ Utilisation
 
@@ -27,3 +27,11 @@ Assurez-vous d'avoir uv installé sur votre machine pour gérer votre environnem
 2. `uv sync` Installez les dépendances python requises
 3. `uv run streamlit run main.py` lancer l'app streamlit (ui)
 4. Charger le fichier `input\demo_optimum.xml` pour la démo
+
+### Option terminal `cli.py` avec typer
+
+- `uv run cli.py --help`
+- `uv run cli.py input\demo_optimum.xml`
+- `uv run cli.py input\demo_optimum.xml -o autre/chemin/de/sortie`
+
+![screen_cli_typer](./docs/screen_cli_typer.png)

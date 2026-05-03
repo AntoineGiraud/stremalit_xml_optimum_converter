@@ -8,3 +8,4 @@ dependencies = [
     "fpdf2>=2.8.7",
     "streamlit>=1.57.0",
 ]
+
